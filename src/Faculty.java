@@ -26,4 +26,6 @@ public class Faculty {
 		newDep[departments.length] = dep;
 		departments = newDep;
 	}
+	
+	
 }
