@@ -4,13 +4,17 @@ import java.io.InputStreamReader;
 
 public class Main {
 
+	private Faculty faculties[] = new Faculty[0];
+	
 	public static void main(String[] args) {
 		boolean end = false;
-		Faculty faculties[] = new Faculty[0];
+		
 		while(!end)
 		{
 			try {
 				String str = getString(">");
+				if(errorCheck(dellEmpty(str.split(" ")), 0))
+					continue;
 				String com = dellEmpty(str.split(" "))[0];
 				switch(com)
 				{
@@ -73,6 +77,8 @@ public class Main {
 	private static void add(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
+		if(errorCheck(com, 1))
+			return;
 		switch(com[1])
 		{
 		case "faculty":
@@ -94,6 +100,8 @@ public class Main {
 	private static void print(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
+		if(errorCheck(com, 1))
+			return;
 		switch(com[1])
 		{
 		case "faculty":
@@ -117,6 +125,8 @@ public class Main {
 	private static void search(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
+		if(errorCheck(com, 1))
+			return;
 		switch(com[1])
 		{
 		case "faculty":
@@ -138,6 +148,8 @@ public class Main {
 	private static void sort(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
+		if(errorCheck(com, 1))
+			return;
 		switch(com[1])
 		{
 		case "faculty":
@@ -153,6 +165,8 @@ public class Main {
 	private static void appoint(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
+		if(errorCheck(com, 1))
+			return;
 		switch(com[1])
 		{
 		case "student":
@@ -210,5 +224,18 @@ public class Main {
 		BufferedReader br = new BufferedReader(isr);
 		String s = br.readLine();
 		return s;
+	}
+	
+	private static boolean errorCheck(String[] com, int i)
+	{
+		if(com.length-1 >= i)
+		{
+			return false;
+		}
+		else
+		{
+			System.out.println("Error");
+			return true;
+		}
 	}
 }
