@@ -24,6 +24,12 @@ public class Main {
 				case "add":
 					add(str);
 					break;
+				case "dell":
+					dell(str);
+					break;
+				case "edit":
+					edit(str);
+					break;
 				case "print":
 					print(str);
 					break;
@@ -86,6 +92,52 @@ public class Main {
 	}
 	
 	private static void add(String str)
+	{
+		String com[] = dellEmpty(str.split(" "));
+		if(errorCheck(com, 1))
+			return;
+		switch(com[1])
+		{
+		case "faculty":
+			break;
+		case "department":
+			break;
+		case "student":
+			break;
+		case "teacher":
+			break;
+		case "group":
+			break;
+		default:
+			System.out.println("Error");
+			return;
+		}
+	}
+	
+	private static void dell(String str)
+	{
+		String com[] = dellEmpty(str.split(" "));
+		if(errorCheck(com, 1))
+			return;
+		switch(com[1])
+		{
+		case "faculty":
+			break;
+		case "department":
+			break;
+		case "student":
+			break;
+		case "teacher":
+			break;
+		case "group":
+			break;
+		default:
+			System.out.println("Error");
+			return;
+		}
+	}
+	
+	private static void edit(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
 		if(errorCheck(com, 1))
