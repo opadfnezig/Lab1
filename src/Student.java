@@ -9,6 +9,12 @@ public class Student {
 		setCourse(course);
 	}
 	
+	public Student()
+	{
+		setName("NoName");
+		setCourse(1);
+	}
+	
 	public void setName(String n)
 	{
 		name = n;
