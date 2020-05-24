@@ -11,6 +11,11 @@ public class Group {
 		students = null;
 	}
 	
+	public void setID(int id)
+	{
+		ID = id;
+	}
+	
 	public void setTeacher(Teacher t)
 	{
 		teacher = t;
@@ -28,6 +33,11 @@ public class Group {
 			newStd[i] = students[i];
 		newStd[students.length] = s;
 		students = newStd;
+	}
+	
+	public int getID()
+	{
+		return ID;
 	}
 	
 	public Teacher getTeacher()
