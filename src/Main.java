@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
 
@@ -6,7 +9,39 @@ public class Main {
 		Faculty faculties[] = new Faculty[0];
 		while(!end)
 		{
-			
+			try {
+				String str = getString(">");
+				String com = dellEmpty(str.split(" "))[0];
+				switch(com)
+				{
+				case "help":
+					help();
+					break;
+				case "add":
+					add(str);
+					break;
+				case "print":
+					print(str);
+					break;
+				case "search":
+					search(str);
+					break;
+				case "sort":
+					sort(str);
+					break;
+				case "appoint":
+					appoint(str);
+					break;
+				case "exit":
+					end = true;
+					System.out.println("Exit");
+					break;
+				default:
+					System.out.println("Error");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -38,7 +73,7 @@ public class Main {
 	private static void add(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
-		switch(com[0])
+		switch(com[1])
 		{
 		case "faculty":
 			break;
@@ -59,7 +94,7 @@ public class Main {
 	private static void print(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
-		switch(com[0])
+		switch(com[1])
 		{
 		case "faculty":
 			break;
@@ -82,7 +117,7 @@ public class Main {
 	private static void search(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
-		switch(com[0])
+		switch(com[1])
 		{
 		case "faculty":
 			break;
@@ -103,7 +138,7 @@ public class Main {
 	private static void sort(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
-		switch(com[0])
+		switch(com[1])
 		{
 		case "faculty":
 			break;
@@ -118,7 +153,7 @@ public class Main {
 	private static void appoint(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
-		switch(com[0])
+		switch(com[1])
 		{
 		case "student":
 			break;
@@ -153,5 +188,27 @@ public class Main {
 		for(int i = 0; i < newStr.length; i++)
 			newStr[i] = str[i];
 		return newStr;
+	}
+	
+	private static void writeText(String wr){
+		if (wr == null)
+			System.out.print("Введіть дані: ");
+		else 
+			System.out.print(wr);
+	}
+	
+	private static String getString() throws IOException{
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		String s = br.readLine();
+		return s;
+	}
+	
+	private static String getString(String wr) throws IOException{
+		writeText(wr);
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		String s = br.readLine();
+		return s;
 	}
 }
