@@ -56,6 +56,16 @@ public class Main {
 		System.out.println("/O - обєкт(faculty, department, student, teacher, group)");
 		System.out.println("/R - шлях([faculty]/[department]/...");
 		System.out.println();
+		System.out.println("del - команда видалення");
+		System.out.println("Спосіб використання: del [/O] [назва/ID] [/R]");
+		System.out.println("/O - обєкт(faculty, department, student, teacher, group)");
+		System.out.println("/R - шлях([faculty]/[department]/...");
+		System.out.println();
+		System.out.println("edit - команда редагування");
+		System.out.println("Спосіб використання: edit [/O] [назва/ID] [/R]");
+		System.out.println("/O - обєкт(faculty, department, student, teacher, group)");
+		System.out.println("/R - шлях([faculty]/[department]/...");
+		System.out.println();
 		System.out.println("print - команда виводу інформації");
 		System.out.println("Спосіб використання: print [/O] [назва/ID]");
 		System.out.println("/O - обєкт(faculty, department, student, teacher, group, course)");
@@ -70,6 +80,7 @@ public class Main {
 		System.out.println("/B - сортувати за(name, course)");
 		System.out.println();
 		System.out.println("appoint - команда назначення студентів та викладачів до групи");
+		System.out.println("Повторне назначення видаляє з групи, а викладачі переназначаються");
 		System.out.println("appoint [/O] [назва] [ID]");
 		System.out.println("/O - обєкт(student, teacher)");
 	}
