@@ -29,9 +29,9 @@ public class Department {
 	public Student[] getStudents() { return students; }
 	public Teacher[] getTeachers() { return teachers; }
 	public Group[] getGroups() { return groups; }
-	public Student getStudentByIndex(int i) { return students[i]; }
-	public Teacher getTeacherByIndex(int i) { return teachers[i]; }
-	public Group getGroupByIndex(int i) { return groups[i]; }
+	public Student studentAt(int i) { return students[i]; }
+	public Teacher teacherAt(int i) { return teachers[i]; }
+	public Group groupAt(int i) { return groups[i]; }
 	
 	public String toString()
 	{
