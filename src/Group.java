@@ -45,6 +45,11 @@ public class Group {
 		return teacher;
 	}
 	
+	public Student[] getStudents()
+	{
+		return students;
+	}
+	
 	public Student studentAt(int i)
 	{
 		return students[i];
@@ -52,17 +57,17 @@ public class Group {
 	
 	public String toString()
 	{
-		String str = "Group ID: " + ID + "\n";
+		String str = "		Group ID: " + ID + "\n";
 		if(teacher != null)
-			str += "Teacher: " + teacher + "\n";
+			str += "		Teacher: " + teacher + "\n";
 		else
-			str += "Teacher: " + teacher + "\n";
-		str += "Students:";
+			str += "		Teacher: " + teacher + "\n";
+		str += "		Students:";
 		if(students != null)
 			for(int i = 0; i < students.length; i++)
-				str += "\n" + students[i];
+				str += "\n			" + students[i];
 		else
-			str += "\n" + "null";
+			str += "\n			" + "null";
 		return str;
 	}
 }

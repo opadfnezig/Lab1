@@ -27,5 +27,26 @@ public class Faculty {
 		departments = newDep;
 	}
 	
+	public String getName()
+	{
+		return name;
+	}
 	
+	public Department[] getDepartments()
+	{
+		return departments;
+	}
+	
+	public Department departmentAt(int i)
+	{
+		return departments[i];
+	}
+	
+	public String toString()
+	{
+		String str = name + ":";
+		for(int i = 0; i < departments.length; i++)
+			str += "\n" + departments[i];
+		return str;
+	}
 }
