@@ -215,13 +215,6 @@ public class Main {
 		return newStr;
 	}
 	
-	private static void writeText(String wr){
-		if (wr == null)
-			System.out.print("Введіть дані: ");
-		else 
-			System.out.print(wr);
-	}
-	
 	private static String getString() throws IOException{
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
@@ -230,7 +223,7 @@ public class Main {
 	}
 	
 	private static String getString(String wr) throws IOException{
-		writeText(wr);
+		System.out.print(wr);
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
 		String s = br.readLine();
