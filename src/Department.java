@@ -94,17 +94,17 @@ public class Department {
 		
 		str += "	Teachers: ";
 		for(int i = 0;i < teachers.length;++i)
-			str += "\n	" + teachers[i].toString();
+			str += "\n		" + teachers[i].toString();
 		if(teachers.length == 0)
 			str += "\n		null";	
 		str += "\n	Students:";
 		for(int i = 0;i < students.length;++i)
-			str += "\n	" + students[i].toString();
+			str += "\n		" + students[i].toString();
 		if(students.length == 0)
 			str += "\n		null";
 		str += "\n	Groups:";
 		for(int i = 0;i < groups.length;++i)
-			str += "\n	" + groups[i].toString();
+			str += "\n		" + groups[i].toString();
 		if(groups.length == 0)
 			str += "\n		null";
 		return str;

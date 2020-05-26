@@ -131,7 +131,7 @@ public class Main {
 				System.out.println("Error");
 			break;
 		case "student":
-			if(errorCheck(com, 3))
+			if(errorCheck(com, 4))
 				break;
 			String roadS[] = com[3].split("/");
 			if(errorCheck(roadS, 1))
@@ -152,7 +152,7 @@ public class Main {
 						}
 						catch(NumberFormatException e)
 						{
-							e.getStackTrace();
+							System.out.println("Error");
 						}
 					}
 				}
@@ -210,7 +210,7 @@ public class Main {
 					}
 					catch(NumberFormatException e)
 					{
-						e.getStackTrace();
+						System.out.println("Error");
 					}
 				}
 				else
@@ -279,6 +279,12 @@ public class Main {
 		switch(com[1])
 		{
 		case "faculty":
+			if(errorCheck(com, 2))
+				return;
+			if(isExist(com[2]))
+				System.out.println(facultyByName(com[2]));
+			else
+				System.out.println("Error");
 			break;
 		case "department":
 			break;
