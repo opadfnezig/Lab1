@@ -6,6 +6,7 @@ public class Faculty {
 	public Faculty(String name)
 	{
 		setName(name);
+		departments = new Department[0];
 	}
 	
 	public void setName(String n)
@@ -42,9 +43,27 @@ public class Faculty {
 		return departments[i];
 	}
 	
+	public boolean isExist(String name)
+	{
+		for(int i = 0; i < departments.length; i++)
+			if(departments[i].getName().equalsIgnoreCase(name))
+				return true;
+		return false;
+	}
+	
+	public Department departmentByName(String name)
+	{
+		for(int i = 0; i < departments.length; i++)
+			if(departments[i].getName().equalsIgnoreCase(name))
+				return departments[i];
+		return null;
+	}
+	
 	public String toString()
 	{
 		String str = name + ":";
+		if(departments.length == 0)
+			str+="\n	null";
 		for(int i = 0; i < departments.length; i++)
 			str += "\n" + departments[i];
 		return str;

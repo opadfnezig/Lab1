@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-	private Faculty faculties[] = new Faculty[0];
+	private static Faculty faculties[] = new Faculty[0];
 	
 	public static void main(String[] args) {
 		boolean end = false;
@@ -58,19 +58,19 @@ public class Main {
 	private static void help()
 	{
 		System.out.println("add - команда створення");
-		System.out.println("Спосіб використання: add [/O] [назва/ID] [/R]");
+		System.out.println("Спосіб використання: add [/O] [назва/ID] [/R] [курс]");
 		System.out.println("/O - обєкт(faculty, department, student, teacher, group)");
-		System.out.println("/R - шлях([faculty]/[department]/...");
+		System.out.println("/R - шлях([faculty]/[department]");
 		System.out.println();
 		System.out.println("del - команда видалення");
 		System.out.println("Спосіб використання: del [/O] [назва/ID] [/R]");
 		System.out.println("/O - обєкт(faculty, department, student, teacher, group)");
-		System.out.println("/R - шлях([faculty]/[department]/...");
+		System.out.println("/R - шлях([faculty]/[department]");
 		System.out.println();
 		System.out.println("edit - команда редагування");
 		System.out.println("Спосіб використання: edit [/O] [назва/ID] [/R]");
 		System.out.println("/O - обєкт(faculty, department, student, teacher, group)");
-		System.out.println("/R - шлях([faculty]/[department]/...");
+		System.out.println("/R - шлях([faculty]/[department]");
 		System.out.println();
 		System.out.println("print - команда виводу інформації");
 		System.out.println("Спосіб використання: print [/O] [назва/ID]");
@@ -99,14 +99,125 @@ public class Main {
 		switch(com[1])
 		{
 		case "faculty":
+			if(errorCheck(com, 2))
+				break;
+			if(com.length > 3)
+			{
+				System.out.println("Error");
+				break;
+			}
+			if(isExist(com[2]))
+			{
+				System.out.println("Error");
+				break;
+			}
+			System.out.println("Success");
+			addFaculty(new Faculty(com[2]));
 			break;
 		case "department":
+			if(errorCheck(com, 3))
+				break;
+			if(isExist(com[3]))
+			{
+				if(facultyByName(com[3]).isExist(com[2]))
+					System.out.println("Error");
+				else
+				{
+					System.out.println("Success");
+					facultyByName(com[3]).addDepartment(new Department(com[2]));
+				}
+			}
+			else
+				System.out.println("Error");
 			break;
 		case "student":
+			if(errorCheck(com, 3))
+				break;
+			String roadS[] = com[3].split("/");
+			if(errorCheck(roadS, 1))
+				break;
+			if(isExist(roadS[0]))
+			{
+				if(facultyByName(roadS[0]).isExist(roadS[1]))
+				{
+					if(facultyByName(roadS[0]).departmentByName(roadS[1]).studentIsExist(com[2]))
+						System.out.println("Error");
+					else
+					{
+						try
+						{
+							int course = Integer.valueOf(com[4]);
+							System.out.println("Success");
+							facultyByName(roadS[0]).departmentByName(roadS[1]).addStudent(new Student(com[2], course));
+						}
+						catch(NumberFormatException e)
+						{
+							e.getStackTrace();
+						}
+					}
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		case "teacher":
+			if(errorCheck(com, 3))
+				break;
+			String roadT[] = com[3].split("/");
+			if(errorCheck(roadT, 1))
+				break;
+			if(isExist(roadT[0]))
+			{
+				if(facultyByName(roadT[0]).isExist(roadT[1]))
+				{
+					if(facultyByName(roadT[0]).departmentByName(roadT[1]).teacherIsExist(com[2]))
+						System.out.println("Error");
+					else
+					{
+						System.out.println("Success");
+						facultyByName(roadT[0]).departmentByName(roadT[1]).addTeacher(new Teacher(com[2]));
+					}
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		case "group":
+			if(errorCheck(com, 3))
+				break;
+			String roadG[] = com[3].split("/");
+			if(errorCheck(roadG, 1))
+				break;
+			if(isExist(roadG[0]))
+			{
+				if(facultyByName(roadG[0]).isExist(roadG[1]))
+				{
+					try
+					{
+						int id = Integer.valueOf(com[2]);
+						if(facultyByName(roadG[0]).departmentByName(roadG[1]).groupIsExist(id))
+							System.out.println("Error");
+						else
+						{
+							
+								System.out.println("Success");
+								facultyByName(roadG[0]).departmentByName(roadG[1]).addGroup(new Group(id));
+						}
+					}
+					catch(NumberFormatException e)
+					{
+						e.getStackTrace();
+					}
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		default:
 			System.out.println("Error");
@@ -293,5 +404,30 @@ public class Main {
 			System.out.println("Error");
 			return true;
 		}
+	}
+	
+	private static void addFaculty(Faculty f)
+	{
+		Faculty newFac[] = new Faculty[faculties.length+1];
+		for(int i = 0; i < faculties.length; i++)
+			newFac[i] = faculties[i];
+		newFac[faculties.length] = f;
+		faculties = newFac;
+	}
+	
+	private static boolean isExist(String name)
+	{
+		for(int i = 0; i < faculties.length; i++)
+			if(faculties[i].getName().equalsIgnoreCase(name))
+				return true;
+		return false;
+	}
+	
+	private static Faculty facultyByName(String name)
+	{
+		for(int i = 0; i < faculties.length; i++)
+			if(faculties[i].getName().equalsIgnoreCase(name))
+				return faculties[i];
+		return null;
 	}
 }
