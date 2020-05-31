@@ -84,6 +84,7 @@ public class Faculty {
 				else
 					newDep[i-1] = departments[i];
 			}
+			departments = newDep;
 		}
 	}
 	
@@ -101,7 +102,7 @@ public class Faculty {
 		Department buff;
 		Department[] depBuf = new Department[departments.length];
 		for(int i = 0;i < depBuf.length;++i)
-			departments[i] = depBuf[i];
+			depBuf[i] = departments[i];
         for(int i = 0; i < depBuf.length; i++)
         {
             for(int j = i; j < depBuf.length; j++)
@@ -122,7 +123,7 @@ public class Faculty {
                 }
             }
         }
-        String output = "";
+        String output = name +":\n";
         output+= depBuf[0].toString();
         for(int i = 1; i < depBuf.length; ++i)
        		output += "\n" + depBuf[i].toString();

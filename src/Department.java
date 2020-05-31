@@ -88,6 +88,117 @@ public class Department {
 		return false;
 	}
 	
+	public void deleteStudentByName(String name)
+	{
+		int index = -1;
+		for(int i = 0; i < students.length; i++)
+		{
+			if(students[i].getName().equalsIgnoreCase(name))
+			{
+				index = i;
+				break;
+			}
+		}
+		if(index < 0)
+			return;
+		else
+		{
+			Student newStd[] = new Student[students.length-1];
+			for(int i = 0; i < students.length; i++)
+			{
+				if(i == index)
+					continue;
+				else if(index > i)
+					newStd[i] = students[i];
+				else
+					newStd[i-1] = students[i];
+			}
+			students = newStd;
+		}
+	}
+	
+	public void deleteTeacherByName(String name)
+	{
+		int index = -1;
+		for(int i = 0; i < teachers.length; i++)
+		{
+			if(teachers[i].getName().equalsIgnoreCase(name))
+			{
+				index = i;
+				break;
+			}
+		}
+		if(index < 0)
+			return;
+		else
+		{
+			Teacher newTea[] = new Teacher[teachers.length-1];
+			for(int i = 0; i < teachers.length; i++)
+			{
+				if(i == index)
+					continue;
+				else if(index > i)
+					newTea[i] = teachers[i];
+				else
+					newTea[i-1] = teachers[i];
+			}
+			teachers = newTea;
+		}
+	}
+	
+	public void deleteGroupByID(int id)
+	{
+		int index = -1;
+		for(int i = 0; i < groups.length; i++)
+		{
+			if(groups[i].getID() == id)
+			{
+				index = i;
+				break;
+			}
+		}
+		if(index < 0)
+			return;
+		else
+		{
+			Group newGrp[] = new Group[groups.length-1];
+			for(int i = 0; i < groups.length; i++)
+			{
+				if(i == index)
+					continue;
+				else if(index > i)
+					newGrp[i] = groups[i];
+				else
+					newGrp[i-1] = groups[i];
+			}
+			groups = newGrp;
+		}
+	}
+	
+	public Student studentByName(String name)
+	{
+		for(int i = 0; i < students.length; i++)
+			if(students[i].getName().equalsIgnoreCase(name))
+				return students[i];
+		return null;
+	}
+	
+	public Teacher teacherByName(String name)
+	{
+		for(int i = 0; i < teachers.length; i++)
+			if(teachers[i].getName().equalsIgnoreCase(name))
+				return teachers[i];
+		return null;
+	}
+	
+	public Group groupByID(int id)
+	{
+		for(int i = 0; i < groups.length; i++)
+			if(groups[i].getID() == id)
+				return groups[i];
+		return null;
+	}
+	
 	public String toString()
 	{
 		String str = "	" + name + ":\n";
