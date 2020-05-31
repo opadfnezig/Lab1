@@ -221,7 +221,7 @@ public class Department {
 		return str;
 	}
 	
-	public String sortedStudents()
+	public String sortedStudentsByName()
 	{
 		Student buff;
 		Student[] stdBuff = new Student[students.length];
