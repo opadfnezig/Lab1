@@ -54,7 +54,7 @@ public class Faculty {
 		Department buff;
 		Department[] depBuf = new Department[departments.length];
 		for(int i = 0;i < depBuf.length;++i)
-			departments[i] = depBuf[i];
+			depBuf[i] = departments[i];
         for(int i = 0; i < depBuf.length; i++)
         {
             for(int j = i; j < depBuf.length; j++)
