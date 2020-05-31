@@ -72,6 +72,7 @@ public class Main {
 		System.out.println("/S - сортувати за(name, course)");
 		System.out.println("printF [назва факультету] [/O] [/S]");
 		System.out.println("/O - обєкт(student, teacher)");
+		System.out.println("/S - сортувати за(name, course)");
 		System.out.println();
 		System.out.println("appoint - команда назначення студентів та викладачів до групи");
 		System.out.println("Повторне назначення видаляє з групи, а викладачі переназначаються");
@@ -221,6 +222,7 @@ public class Main {
 		switch(com[1])
 		{
 		case "faculty":
+			
 			break;
 		case "department":
 			break;
@@ -270,11 +272,17 @@ public class Main {
 			if(errorCheck(com, 2))
 				return;
 			if(isExist(com[2]))
-				System.out.println(facultyByName(com[2]));
+			{
+				if(com.length > 3)
+					System.out.println(facultyByName(com[2]).sortedDepartments());
+				else
+					System.out.println(facultyByName(com[2]));
+			}
 			else
 				System.out.println("Error");
 			break;
 		case "department":
+			
 			break;
 		case "student":
 			break;

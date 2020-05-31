@@ -59,6 +59,34 @@ public class Faculty {
 		return null;
 	}
 	
+	public void deleteDepartmentByName(String name)
+	{
+		int index = -1;
+		for(int i = 0; i < departments.length; i++)
+		{
+			if(departments[i].getName().equalsIgnoreCase(name))
+			{
+				index = i;
+				break;
+			}
+		}
+		if(index < 0)
+			return;
+		else
+		{
+			Department newDep[] = new Department[departments.length-1];
+			for(int i = 0; i < departments.length; i++)
+			{
+				if(i == index)
+					continue;
+				else if(index > i)
+					newDep[i] = departments[i];
+				else
+					newDep[i-1] = departments[i];
+			}
+		}
+	}
+	
 	public String toString()
 	{
 		String str = name + ":";
