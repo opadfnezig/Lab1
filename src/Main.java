@@ -33,12 +33,6 @@ public class Main {
 				case "print":
 					print(str);
 					break;
-				case "search":
-					search(str);
-					break;
-				case "sort":
-					sort(str);
-					break;
 				case "appoint":
 					appoint(str);
 					break;
@@ -68,22 +62,16 @@ public class Main {
 		System.out.println("/R - шлях([faculty]/[department]");
 		System.out.println();
 		System.out.println("edit - команда редагування");
-		System.out.println("Спосіб використання: edit [/O] [назва/ID] [/R]");
+		System.out.println("Спосіб використання: edit [/O] [назва/ID] [/R] [нова назва/ID] [новий курс]");
 		System.out.println("/O - обєкт(faculty, department, student, teacher, group)");
 		System.out.println("/R - шлях([faculty]/[department]");
 		System.out.println();
 		System.out.println("print - команда виводу інформації");
-		System.out.println("Спосіб використання: print [/O] [назва/ID]");
+		System.out.println("Спосіб використання: print [/O] [назва/ID] [/S]");
 		System.out.println("/O - обєкт(faculty, department, student, teacher, group, course)");
-		System.out.println();
-		System.out.println("search - команда пошуку");
-		System.out.println("Спосіб використання: search [/O] [назва/ID]");
-		System.out.println("/O - обєкт(faculty, department, student, teacher, group)");
-		System.out.println();
-		System.out.println("sort - команда сортування");
-		System.out.println("Спосіб використання: sort [/O] [назва/ID] [/B]");
-		System.out.println("/O - обєкт(faculty, department)");
-		System.out.println("/B - сортувати за(name, course)");
+		System.out.println("/S - сортувати за(name, course)");
+		System.out.println("printF [назва факультету] [/O] [/S]");
+		System.out.println("/O - обєкт(student, teacher)");
 		System.out.println();
 		System.out.println("appoint - команда назначення студентів та викладачів до групи");
 		System.out.println("Повторне назначення видаляє з групи, а викладачі переназначаються");
@@ -302,46 +290,6 @@ public class Main {
 		}
 	}
 	
-	private static void search(String str)
-	{
-		String com[] = dellEmpty(str.split(" "));
-		if(errorCheck(com, 1))
-			return;
-		switch(com[1])
-		{
-		case "faculty":
-			break;
-		case "department":
-			break;
-		case "student":
-			break;
-		case "teacher":
-			break;
-		case "group":
-			break;
-		default:
-			System.out.println("Error");
-			return;
-		}
-	}
-	
-	private static void sort(String str)
-	{
-		String com[] = dellEmpty(str.split(" "));
-		if(errorCheck(com, 1))
-			return;
-		switch(com[1])
-		{
-		case "faculty":
-			break;
-		case "department":
-			break;
-		default:
-			System.out.println("Error");
-			return;
-		}
-	}
-	
 	private static void appoint(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
@@ -365,7 +313,7 @@ public class Main {
 		int count = 0;
 		for(int i = 0; i < str.length; i++)
 		{
-			if(str[i] == "" || str[i] == null)
+			if(str[i].equalsIgnoreCase("") || str[i] == null)
 			{
 				newStr = reduceArr(newStr);
 				count++;
