@@ -47,6 +47,7 @@ public class Base
 		Faculty faculties[] = new Faculty[0];
 		if(s != "")
 		{
+			s.split("faculties\\[\\]\\{\\n((.*\\n)*)\\}$");
 		}
 		return faculties;
 		
