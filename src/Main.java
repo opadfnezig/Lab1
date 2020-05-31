@@ -222,7 +222,15 @@ public class Main {
 		switch(com[1])
 		{
 		case "faculty":
-			
+			if(errorCheck(com, 2))
+				break;
+			if(isExist(com[2]))
+			{
+				deleteFacultyByName(com[2]);
+				System.out.println("Success");
+			}
+			else
+				System.out.println("Error");
 			break;
 		case "department":
 			break;
@@ -269,12 +277,18 @@ public class Main {
 		switch(com[1])
 		{
 		case "faculty":
+			System.out.println(com.length);
 			if(errorCheck(com, 2))
 				return;
 			if(isExist(com[2]))
 			{
-				if(com.length > 3)
-					System.out.println(facultyByName(com[2]).sortedDepartments());
+				if(com.length > 2)
+				{
+					if(com[3].equalsIgnoreCase("name"))
+						System.out.println(facultyByName(com[2]).sortedDepartments());
+					else
+						System.out.println("Error");
+				}
 				else
 					System.out.println(facultyByName(com[2]));
 			}
@@ -391,5 +405,34 @@ public class Main {
 			if(faculties[i].getName().equalsIgnoreCase(name))
 				return faculties[i];
 		return null;
+	}
+	
+	private static void deleteFacultyByName(String name)
+	{
+		int index = -1;
+		for(int i = 0; i < faculties.length; i++)
+		{
+			if(faculties[i].getName().equalsIgnoreCase(name))
+			{
+				index = i;
+				break;
+			}
+		}
+		if(index < 0)
+			return;
+		else
+		{
+			Faculty newFac[] = new Faculty[faculties.length-1];
+			for(int i = 0; i < faculties.length; i++)
+			{
+				if(i == index)
+					continue;
+				else if(index > i)
+					newFac[i] = faculties[i];
+				else
+					newFac[i-1] = faculties[i];
+			}
+			faculties = newFac;
+		}
 	}
 }
