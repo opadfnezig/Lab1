@@ -196,7 +196,6 @@ public class Department {
 	public String toString()
 	{
 		String str = "	" + name + ":\n";
-		
 		str += "	Teachers: ";
 		for(int i = 0;i < teachers.length;++i)
 			str += "\n		" + teachers[i].toString();
@@ -254,9 +253,7 @@ public class Department {
 		for(int i = 0;i < tchBuff.length;++i)
 			tchBuff[i] = teachers[i];
         for(int i = 0; i < tchBuff.length; i++)
-        {
             for(int j = i; j < tchBuff.length; j++)
-            {
                 for(int k = 0; k < Math.max(tchBuff[i].getName().length(), tchBuff[j].getName().length()); k++)
                 {
                     if(tchBuff[i].getName().charAt(k) == tchBuff[j].getName().charAt(k))
@@ -271,8 +268,6 @@ public class Department {
                     else
                         break;
                 }
-            }
-        }
         String output = "";
         output+= tchBuff[0].toString();
         for(int i = 1; i < tchBuff.length; ++i)
@@ -286,9 +281,7 @@ public class Department {
 		for(int i = 0;i < grpBuff.length;++i)
 			grpBuff[i] = groups[i];
         for(int i = 0; i < grpBuff.length; i++)
-        {
             for(int j = i; j < grpBuff.length; j++)
-            {
                  if(grpBuff[i].getID() > grpBuff[j].getID())
                  {
                  	buff = grpBuff[i];
@@ -296,12 +289,56 @@ public class Department {
                    	grpBuff[j] = buff;
                    	break;
                  }
-            }
-        }
         String output = "";
         output+= grpBuff[0].toString();
         for(int i = 1; i < grpBuff.length; ++i)
        		output += "\n" + grpBuff[i].toString();
         return output;
+	}
+	
+	public String sortedByName()
+	{
+		String output = "	Teachers:\n";
+		output += sortedTeachers();
+		output += "	Students:\n";
+		output += sortedStudentsByName();
+		output += "	Groups:";
+		for(int i = 0;i< groups.length;++i)
+			output += "\n" + groups[i].toString();
+		return output;
+	}
+	
+	public String sortedStudentsByCourse()
+	{
+		Student buff;
+		Student[] stdBuff = new Student[students.length];
+		for(int i = 0;i < stdBuff.length;++i)
+			stdBuff[i] = students[i];
+		  for(int i = 0; i < stdBuff.length; i++)
+	            for(int j = i; j < stdBuff.length; j++)
+	                 if(stdBuff[i].getCourse() > stdBuff[j].getCourse())
+	                 {
+	                 	buff = stdBuff[i];
+	                 	stdBuff[i] = stdBuff[j];
+	                 	stdBuff[j] = buff;
+	                   	break;
+	                 }
+        String output = "";
+        output+= stdBuff[0].toString();
+        for(int i = 1; i < stdBuff.length; ++i)
+       		output += "\n" + stdBuff[i].toString();
+        return output;
+	}
+	
+	public String sortedByCourse()
+	{
+		String output = "	Teachers:\n";
+		output += sortedTeachers();
+		output += "	Students:\n";
+		output += sortedStudentsByCourse();
+		output += "	Groups:";
+		for(int i = 0;i< groups.length;++i)
+			output += "\n" + groups[i].toString();
+		return output;
 	}
 }
