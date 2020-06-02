@@ -229,7 +229,6 @@ public class Faculty {
         return output;
 	}
 	
->>>>>>> 78ad62502ba84f2a3d49f19d1f36063e30849cb3
 	public String teachers()
 	{
 		String str = name + ":";

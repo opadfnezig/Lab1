@@ -739,9 +739,10 @@ public class Main {
 					switch(com[3])
 					{
 					case "name":
-						
+						System.out.println(facultyByName(com[1]).sortedStudentsByName());
 						break;
 					case "course":
+						System.out.println(facultyByName(com[1]).sortedStudentsByCourse());
 						break;
 					default:
 						break;
@@ -754,7 +755,7 @@ public class Main {
 				if(com.length > 3)
 				{
 					if(com[3].equalsIgnoreCase("name"))
-						
+						System.out.println(facultyByName(com[1]).sortedTeachersByName());
 					else
 						System.out.println("Error");
 				}
