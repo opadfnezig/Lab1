@@ -176,7 +176,57 @@ public class Faculty {
 	
 	public String sortedStudentsByName()
 	{
-		
+		Student buff;
+		Student[] stdBuff = new Student[getAllStudents().length];
+		for(int i = 0;i < stdBuff.length;++i)
+			stdBuff[i] = getAllStudents()[i];
+        for(int i = 0; i < stdBuff.length; i++)
+        {
+            for(int j = i; j < stdBuff.length; j++)
+            {
+                for(int k = 0; k < Math.max(stdBuff[i].getName().length(), stdBuff[j].getName().length()); k++)
+                {
+                    if(stdBuff[i].getName().charAt(k) == stdBuff[j].getName().charAt(k))
+                        continue;
+                    if(stdBuff[i].getName().charAt(k) > stdBuff[j].getName().charAt(k))
+                    {
+                    	buff = stdBuff[i];
+                    	stdBuff[i] = stdBuff[j];
+                    	stdBuff[j] = buff;
+                        break;
+                    }
+                    else
+                        break;
+                }
+            }
+        }
+        String output = "";
+        output+= stdBuff[0].toString();
+        for(int i = 1; i < stdBuff.length; ++i)
+       		output += "\n" + stdBuff[i].toString();
+        return output;
+	}
+	
+	public String sortedStudentsByCourse()
+	{
+		Student buff;
+		Student[] stdBuff = new Student[getAllStudents().length];
+		for(int i = 0;i < stdBuff.length;++i)
+			stdBuff[i] = getAllStudents()[i];
+		  for(int i = 0; i < stdBuff.length; i++)
+	            for(int j = i; j < stdBuff.length; j++)
+	                 if(stdBuff[i].getCourse() > stdBuff[j].getCourse())
+	                 {
+	                 	buff = stdBuff[i];
+	                 	stdBuff[i] = stdBuff[j];
+	                 	stdBuff[j] = buff;
+	                   	break;
+	                 }
+        String output = "";
+        output+= stdBuff[0].toString();
+        for(int i = 1; i < stdBuff.length; ++i)
+       		output += "\n" + stdBuff[i].toString();
+        return output;
 	}
 	
 	public String teachers()
