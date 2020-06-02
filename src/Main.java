@@ -736,7 +736,16 @@ public class Main {
 			case "student":
 				if(com.length > 3)
 				{
-					
+					switch(com[3])
+					{
+					case "name":
+						
+						break;
+					case "course":
+						break;
+					default:
+						break;
+					}
 				}
 				else
 					System.out.println(facultyByName(com[1]).students());
@@ -744,7 +753,10 @@ public class Main {
 			case "teacher":
 				if(com.length > 3)
 				{
-					switch(com[3])
+					if(com[3].equalsIgnoreCase("name"))
+						
+					else
+						System.out.println("Error");
 				}
 				else
 					System.out.println(facultyByName(com[1]).teachers());

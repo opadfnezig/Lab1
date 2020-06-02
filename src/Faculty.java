@@ -174,16 +174,40 @@ public class Faculty {
 		return str;
 	}
 	
-	public String sortedStudentsByName()
-	{
-		
-	}
-	
 	public String teachers()
 	{
 		String str = name + ":";
 		for(Teacher tea:getAllTeachers())
 			str += "\n	" + tea;
+		return str;
+	}
+	
+	public String sortedTeachersByName()
+	{
+		Teacher allTea[] = getAllTeachers();
+		for(int i = 0; i < allTea.length; i++)
+		{
+			for(int j = 0; j < allTea.length; j++)
+			{
+				for(int k = 0; k < Math.max(allTea[i].getName().length(), allTea[j].getName().length()); k++)
+				{
+					 if(allTea[i].getName().charAt(k) == allTea[j].getName().charAt(k))
+						 continue;
+	                 if(allTea[i].getName().charAt(k) > allTea[j].getName().charAt(k))
+	                 {
+	                    Teacher buff = allTea[i];
+	                    allTea[i] = allTea[j];
+	                    allTea[j] = buff;
+	                    break;
+	                 }
+	                 else
+	                	 break;
+				}
+			}
+		}
+		String str = name+":";
+		for(Teacher tea:allTea)
+			str+="\n"+tea;
 		return str;
 	}
 	
