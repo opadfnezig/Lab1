@@ -148,13 +148,52 @@ public class Faculty {
 		return allStd;
 	}
 	
+	private Teacher[] getAllTeachers()
+	{
+		Teacher allTea[] = new Teacher[0];
+		for(Department dep:departments)
+		{
+			Teacher dopTea[] = new Teacher[allTea.length+dep.getTeachers().length];
+			for(int i = 0; i < dopTea.length; i++)
+			{
+				if(i < allTea.length)
+					dopTea[i] = allTea[i];
+				else
+					dopTea[i] = dep.getTeachers()[i-allTea.length];
+			}
+			allTea = dopTea;
+		}
+		return allTea;
+	}
+	
+	public String students()
+	{
+		String str = name + ":";
+		for(Student std:getAllStudents())
+			str += "\n	" + std;
+		return str;
+	}
+	
+	public String sortedStudentsByName()
+	{
+		
+	}
+	
+	public String teachers()
+	{
+		String str = name + ":";
+		for(Teacher tea:getAllTeachers())
+			str += "\n	" + tea;
+		return str;
+	}
+	
 	public String studentsByCourse(int course)
 	{
 		String str = name + ":";
 		for(Student std:getAllStudents())
 		{
 			if(std.getCourse() == course)
-				str+="\n" + std;
+				str+="\n	" + std;
 		}
 		return str;
 	}

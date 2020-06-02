@@ -8,7 +8,6 @@ public class Main {
 	
 	public static void main(String[] args) {
 		boolean end = false;
-		
 		while(!end)
 		{
 			try {
@@ -32,6 +31,9 @@ public class Main {
 					break;
 				case "print":
 					print(str);
+					break;
+				case "printF":
+					printF(str);
 					break;
 				case "appoint":
 					appoint(str);
@@ -71,6 +73,7 @@ public class Main {
 		System.out.println("/O - обєкт(faculty, department, student, teacher, group, course)");
 		System.out.println("/R - шлях([faculty]/[department]");
 		System.out.println("/S - сортувати за(name, course)");
+		System.out.println();
 		System.out.println("printF [назва факультету] [/O] [/S]");
 		System.out.println("/O - обєкт(student, teacher)");
 		System.out.println("/S - сортувати за(name, course)");
@@ -716,6 +719,45 @@ public class Main {
 		}
 	}
 	
+	private static void printF(String str)
+	{
+		String com[] = dellEmpty(str.split(" "));
+		if(errorCheck(com, 2))
+			return;
+		if(com.length > 4)
+		{
+			System.out.println("Error");
+			return;
+		}
+		if(isExist(com[1]))
+		{
+			switch(com[2])
+			{
+			case "student":
+				if(com.length > 3)
+				{
+					
+				}
+				else
+					System.out.println(facultyByName(com[1]).students());
+				break;
+			case "teacher":
+				if(com.length > 3)
+				{
+					switch(com[3])
+				}
+				else
+					System.out.println(facultyByName(com[1]).teachers());
+				break;
+			default:
+				System.out.println("Error");
+				break;
+			}
+		}
+		else
+			System.out.println("Error");
+	}
+	
 	private static void appoint(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
@@ -817,6 +859,10 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * @param str
+	 * @return
+	 */
 	private static String[] dellEmpty(String[] str)
 	{
 		String newStr[] = new String[str.length];
