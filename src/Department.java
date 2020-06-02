@@ -73,8 +73,8 @@ public class Department {
 	}
 	public boolean teacherIsExist(String name)
 	{
-		for(int i = 0; i < students.length; i++)
-			if(students[i].getName().equalsIgnoreCase(name))
+		for(int i = 0; i < teachers.length; i++)
+			if(teachers[i].getName().equalsIgnoreCase(name))
 				return true;
 		return false;
 	}

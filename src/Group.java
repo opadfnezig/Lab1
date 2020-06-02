@@ -7,8 +7,8 @@ public class Group {
 	public Group(int id)
 	{
 		ID = id;
-		teacher = null;
-		students = null;
+		teacher = new Teacher();
+		students = new Student[0];
 	}
 	
 	public void setID(int id)
@@ -57,7 +57,7 @@ public class Group {
 	
 	public String toString()
 	{
-		String str = "		Group ID: " + ID + "\n";
+		String str = "Group ID: " + ID + "\n";
 		if(teacher != null)
 			str += "		Teacher: " + teacher + "\n";
 		else

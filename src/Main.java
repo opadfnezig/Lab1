@@ -3,7 +3,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-
+	/**
+	 * масив факультеттів
+	 */
 	private static Faculty faculties[] = new Faculty[0];
 	
 	public static void main(String[] args) {
@@ -50,7 +52,9 @@ public class Main {
 			}
 		}
 	}
-	
+	/**
+	 * Метод що вивиодить інструкцію до проограми
+	 */
 	private static void help()
 	{
 		System.out.println("add - команда створення");
@@ -85,6 +89,10 @@ public class Main {
 		System.out.println("/O - обєкт(student, teacher)");
 	}
 	
+	/**
+	 * Метод що створює нові обєкти
+	 * @param str рядок що був ведений користувачем
+	 */
 	private static void add(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
@@ -219,6 +227,10 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Метод що видаляє обєкти
+	 * @param str рядок що був ведений користувачем
+	 */
 	private static void dell(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
@@ -362,7 +374,10 @@ public class Main {
 			return;
 		}
 	}
-	
+	/**
+	 * метод що редагує обєкти
+	 * @param str рядок що був ведений користувачем
+	 */
 	private static void edit(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
@@ -517,7 +532,10 @@ public class Main {
 			return;
 		}
 	}
-	
+	/**
+	 * метод що виводить інформацію про обєкти
+	 * @param str рядок що був ведений користувачем
+	 */
 	private static void print(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
@@ -718,7 +736,10 @@ public class Main {
 			return;
 		}
 	}
-	
+	/**
+	 * Метод що виводить студентів або вчителів не відносячи їх до кафедр
+	 * @param str рядок що був ведений користувачем
+	 */
 	private static void printF(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
@@ -770,7 +791,10 @@ public class Main {
 		else
 			System.out.println("Error");
 	}
-	
+	/**
+	 * Метод що назначає студентів і вчителів до груп
+	 * @param str рядок що був ведений користувачем
+	 */
 	private static void appoint(String str)
 	{
 		String com[] = dellEmpty(str.split(" "));
@@ -873,8 +897,9 @@ public class Main {
 	}
 	
 	/**
-	 * @param str
-	 * @return
+	 * Метод що видаляє непотрібні комірки в масиві
+	 * @param str масив з робитими словами що були введені користувачем
+	 * @return масив без непотрібних комірок
 	 */
 	private static String[] dellEmpty(String[] str)
 	{
@@ -892,7 +917,11 @@ public class Main {
 		}
 		return str;
 	}
-	
+	/**
+	 * Метод що зменшує масив на один забираючи кінцеву комірку
+	 * @param str масив рядків
+	 * @return масив рядків без останьої комірки
+	 */
 	private static String[] reduceArr(String[] str)
 	{
 		String newStr[] = new String[str.length-1];
@@ -900,14 +929,23 @@ public class Main {
 			newStr[i] = str[i];
 		return newStr;
 	}
-	
+	/**
+	 * Метод що зчитує введений користувачем рядок
+	 * @return рядок введений користувачем
+	 * @throws IOException
+	 */
 	private static String getString() throws IOException{
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
 		String s = br.readLine();
 		return s;
 	}
-	
+	/**
+	 * Метод що зчитує введений користувачем рядок
+	 * @param wr рядок що виведеться перед тим як користувач введе
+	 * @return рядок введений користувачем
+	 * @throws IOException
+	 */
 	private static String getString(String wr) throws IOException{
 		System.out.print(wr);
 		InputStreamReader isr = new InputStreamReader(System.in);
@@ -915,7 +953,12 @@ public class Main {
 		String s = br.readLine();
 		return s;
 	}
-	
+	/**
+	 * Метод що перевіряє чи достатньо довгий масив
+	 * @param com масив
+	 * @param i число за яке має бути більший масив
+	 * @return true - якщо менший false - якщо більший 
+	 */
 	private static boolean errorCheck(String[] com, int i)
 	{
 		if(com.length-1 >= i)
@@ -928,7 +971,10 @@ public class Main {
 			return true;
 		}
 	}
-	
+	/**
+	 * Метод що додає до масиву факультетів ще один
+	 * @param f факультет що потрібно додати
+	 */
 	private static void addFaculty(Faculty f)
 	{
 		Faculty newFac[] = new Faculty[faculties.length+1];
@@ -937,7 +983,11 @@ public class Main {
 		newFac[faculties.length] = f;
 		faculties = newFac;
 	}
-	
+	/**
+	 * Метод що перевіряє чи існує факультет з заданим іменем
+	 * @param name імя факультету
+	 * @return true - якщо існує false - якщо не існує
+	 */
 	private static boolean isExist(String name)
 	{
 		for(int i = 0; i < faculties.length; i++)
@@ -945,7 +995,11 @@ public class Main {
 				return true;
 		return false;
 	}
-	
+	/**
+	 * Метод що повертає факультет за його іменем
+	 * @param name імя факультету
+	 * @return факультет під вказним іменем
+	 */
 	private static Faculty facultyByName(String name)
 	{
 		for(int i = 0; i < faculties.length; i++)
@@ -953,7 +1007,10 @@ public class Main {
 				return faculties[i];
 		return null;
 	}
-	
+	/**
+	 * Метод що видаляє факультет за його іменем 
+	 * @param name імя факультет
+	 */
 	private static void deleteFacultyByName(String name)
 	{
 		int index = -1;
