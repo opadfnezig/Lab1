@@ -77,7 +77,8 @@ public class Main {
 		System.out.println();
 		System.out.println("appoint - команда назначення студентів та викладачів до групи");
 		System.out.println("Повторне назначення видаляє з групи, а викладачі переназначаються");
-		System.out.println("appoint [/O] [назва] [ID]");
+		System.out.println("appoint [/O] [назва] [/R] [ID]");
+		System.out.println("/R - шлях([faculty]/[department]");
 		System.out.println("/O - обєкт(student, teacher)");
 	}
 	
@@ -225,6 +226,11 @@ public class Main {
 		case "faculty":
 			if(errorCheck(com, 2))
 				break;
+			if(com.length > 3)
+			{
+				System.out.println("Error");
+				break;
+			}
 			if(isExist(com[2]))
 			{
 				deleteFacultyByName(com[2]);
@@ -236,6 +242,11 @@ public class Main {
 		case "department":
 			if(errorCheck(com, 3))
 				break;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
 			if(isExist(com[3]))
 			{
 				if(facultyByName(com[3]).isExist(com[2]))
@@ -252,6 +263,11 @@ public class Main {
 		case "student":
 			if(errorCheck(com, 3))
 				break;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
 			String roadS[] = com[3].split("/");
 			if(errorCheck(roadS, 1))
 				break;
@@ -276,6 +292,11 @@ public class Main {
 		case "teacher":
 			if(errorCheck(com, 3))
 				break;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
 			String roadT[] = com[3].split("/");
 			if(errorCheck(roadT, 1))
 				break;
@@ -300,6 +321,11 @@ public class Main {
 		case "group":
 			if(errorCheck(com, 3))
 				break;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
 			String roadG[] = com[3].split("/");
 			if(errorCheck(roadG, 1))
 				break;
@@ -344,6 +370,11 @@ public class Main {
 		case "faculty":
 			if(errorCheck(com, 3))
 				break;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
 			if(isExist(com[2]))
 			{
 				facultyByName(com[2]).setName(com[3]);
@@ -355,6 +386,11 @@ public class Main {
 		case "department":
 			if(errorCheck(com, 4))
 				break;
+			if(com.length > 5)
+			{
+				System.out.println("Error");
+				break;
+			}
 			if(isExist(com[3]))
 			{
 				if(facultyByName(com[3]).isExist(com[2]))
@@ -371,6 +407,11 @@ public class Main {
 		case "student":
 			if(errorCheck(com, 5))
 				break;
+			if(com.length > 6)
+			{
+				System.out.println("Error");
+				break;
+			}
 			String roadS[] = com[3].split("/");
 			if(errorCheck(roadS, 1))
 				break;
@@ -403,8 +444,13 @@ public class Main {
 				System.out.println("Error");
 			break;
 		case "teacher":
-			if(errorCheck(com, 3))
+			if(errorCheck(com, 4))
 				break;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
 			String roadT[] = com[3].split("/");
 			if(errorCheck(roadT, 1))
 				break;
@@ -427,8 +473,13 @@ public class Main {
 				System.out.println("Error");
 			break;
 		case "group":
-			if(errorCheck(com, 3))
+			if(errorCheck(com, 4))
 				break;
+			if(com.length > 5)
+			{
+				System.out.println("Error");
+				break;
+			}
 			String roadG[] = com[3].split("/");
 			if(errorCheck(roadG, 1))
 				break;
@@ -474,6 +525,11 @@ public class Main {
 		case "faculty":
 			if(errorCheck(com, 2))
 				return;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
 			if(isExist(com[2]))
 			{
 				if(com.length > 3)
@@ -490,15 +546,169 @@ public class Main {
 				System.out.println("Error");
 			break;
 		case "department":
-			
+			if(errorCheck(com, 3))
+				return;
+			if(com.length > 5)
+			{
+				System.out.println("Error");
+				break;
+			}
+			if(isExist(com[3]))
+			{
+				if(facultyByName(com[3]).isExist(com[2]))
+				{
+					if(com.length > 4)
+					{
+						if(com[4].equalsIgnoreCase("name"))
+							System.out.println(facultyByName(com[2]).departmentByName(com[2]).sortedByName());
+						else if(com[4].equalsIgnoreCase("course"))
+							System.out.println(facultyByName(com[2]).departmentByName(com[2]).sortedByCourse());
+						else
+							System.out.println("Error");
+					}
+					else
+						System.out.println(facultyByName(com[3]).departmentByName(com[2]));
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		case "student":
+			if(errorCheck(com, 3))
+				return;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
+			String roadS[] = com[3].split("/");
+			if(errorCheck(roadS, 1))
+				break;
+			if(isExist(roadS[0]))
+			{
+				if(facultyByName(roadS[0]).isExist(roadS[1]))
+				{
+					if(facultyByName(roadS[0]).departmentByName(roadS[1]).studentIsExist(com[2]))
+						System.out.println(facultyByName(roadS[0]).departmentByName(roadS[1]).studentByName(com[2]));
+					else
+						System.out.println("Error");
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		case "teacher":
+			if(errorCheck(com, 3))
+				return;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
+			String roadT[] = com[3].split("/");
+			if(errorCheck(roadT, 1))
+				break;
+			if(isExist(roadT[0]))
+			{
+				if(facultyByName(roadT[0]).isExist(roadT[1]))
+				{
+					if(facultyByName(roadT[0]).departmentByName(roadT[1]).teacherIsExist(com[2]))
+						System.out.println(facultyByName(roadT[0]).departmentByName(roadT[1]).teacherByName(com[2]));
+					else
+						System.out.println("Error");
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		case "group":
+			if(errorCheck(com, 3))
+				return;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
+			String roadG[] = com[3].split("/");
+			if(errorCheck(roadG, 1))
+				break;
+			if(isExist(roadG[0]))
+			{
+				if(facultyByName(roadG[0]).isExist(roadG[1]))
+				{
+					try
+					{
+						int id = Integer.valueOf(com[2]);
+						if(facultyByName(roadG[0]).departmentByName(roadG[1]).groupIsExist(id))
+							System.out.println(facultyByName(roadG[0]).departmentByName(roadG[1]).groupByID(id));
+						else
+							System.out.println("Error");
+					}
+					catch(NumberFormatException e)
+					{
+						System.out.println("Error");
+					}
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		case "course":
+			if(errorCheck(com, 3))
+				return;
+			if(com.length > 4)
+			{
+				System.out.println("Error");
+				break;
+			}
+			String roadC[] = com[3].split("/");
+			if(roadC.length == 1)
+			{
+				if(isExist(com[3]))
+				{
+					try
+					{
+						int course = Integer.valueOf(com[2]);
+						System.out.println(facultyByName(com[3]).studentsByCourse(course));
+					}
+					catch(NumberFormatException e)
+					{
+						System.out.println("Error");
+					}
+				}
+				else
+					System.out.println("Error");
+			}
+			else if(roadC.length == 2)
+			{
+				if(isExist(roadC[0]))
+				{
+					if(facultyByName(roadC[0]).isExist(roadC[0])) 
+					{
+						try
+						{
+							int course = Integer.valueOf(com[2]);
+							System.out.println(facultyByName(com[3]).studentsByCourse(course));
+						}
+						catch(NumberFormatException e)
+						{
+							System.out.println("Error");
+						}
+					}
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		default:
 			System.out.println("Error");
@@ -514,8 +724,92 @@ public class Main {
 		switch(com[1])
 		{
 		case "student":
+			if(errorCheck(com, 4))
+				return;
+			if(com.length > 5)
+			{
+				System.out.println("Error");
+				break;
+			}
+			String roadS[] = com[3].split("/");
+			if(errorCheck(roadS, 1))
+				break;
+			if(isExist(roadS[0]))
+			{
+				if(facultyByName(roadS[0]).isExist(roadS[1]))
+				{
+					if(facultyByName(roadS[0]).departmentByName(roadS[1]).studentIsExist(com[2]))
+					{
+						try
+						{
+							int id = Integer.valueOf(com[4]);
+							if(facultyByName(roadS[0]).departmentByName(roadS[1]).groupIsExist(id))
+							{
+								facultyByName(roadS[0]).departmentByName(roadS[1]).
+								groupByID(id).addStudent(facultyByName(roadS[0]).
+								departmentByName(roadS[1]).studentByName(com[2]));
+							}
+							else
+								System.out.println("Error");
+								
+						}
+						catch(NumberFormatException e)
+						{
+							System.out.println("Error");
+						}
+					}
+					else
+						System.out.println("Error");
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		case "teacher":
+			if(errorCheck(com, 4))
+				return;
+			if(com.length > 5)
+			{
+				System.out.println("Error");
+				break;
+			}
+			String roadT[] = com[3].split("/");
+			if(errorCheck(roadT, 1))
+				break;
+			if(isExist(roadT[0]))
+			{
+				if(facultyByName(roadT[0]).isExist(roadT[1]))
+				{
+					if(facultyByName(roadT[0]).departmentByName(roadT[1]).teacherIsExist(com[2]))
+					{
+						try
+						{
+							int id = Integer.valueOf(com[4]);
+							if(facultyByName(roadT[0]).departmentByName(roadT[1]).groupIsExist(id))
+							{
+								facultyByName(roadT[0]).departmentByName(roadT[1]).
+								groupByID(id).setTeacher(facultyByName(roadT[0]).
+								departmentByName(roadT[1]).teacherByName(com[2]));
+							}
+							else
+								System.out.println("Error");
+								
+						}
+						catch(NumberFormatException e)
+						{
+							System.out.println("Error");
+						}
+					}
+					else
+						System.out.println("Error");
+				}
+				else
+					System.out.println("Error");
+			}
+			else
+				System.out.println("Error");
 			break;
 		default:
 			System.out.println("Error");

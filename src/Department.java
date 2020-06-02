@@ -71,7 +71,6 @@ public class Department {
 				return true;
 		return false;
 	}
-	
 	public boolean teacherIsExist(String name)
 	{
 		for(int i = 0; i < students.length; i++)
@@ -79,7 +78,6 @@ public class Department {
 				return true;
 		return false;
 	}
-	
 	public boolean groupIsExist(int id)
 	{
 		for(int i = 0; i < groups.length; i++)
@@ -116,7 +114,6 @@ public class Department {
 			students = newStd;
 		}
 	}
-	
 	public void deleteTeacherByName(String name)
 	{
 		int index = -1;
@@ -145,7 +142,6 @@ public class Department {
 			teachers = newTea;
 		}
 	}
-	
 	public void deleteGroupByID(int id)
 	{
 		int index = -1;
@@ -182,7 +178,6 @@ public class Department {
 				return students[i];
 		return null;
 	}
-	
 	public Teacher teacherByName(String name)
 	{
 		for(int i = 0; i < teachers.length; i++)
@@ -190,7 +185,6 @@ public class Department {
 				return teachers[i];
 		return null;
 	}
-	
 	public Group groupByID(int id)
 	{
 		for(int i = 0; i < groups.length; i++)
@@ -253,7 +247,6 @@ public class Department {
        		output += "\n" + stdBuff[i].toString();
         return output;
 	}
-	
 	public String sortedTeachers()
 	{
 		Teacher buff;
@@ -286,7 +279,6 @@ public class Department {
        		output += "\n" + tchBuff[i].toString();
         return output;
 	}
-	
 	public String sortedGroups()
 	{
 		Group buff;

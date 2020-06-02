@@ -130,13 +130,32 @@ public class Faculty {
         return output;
     }
 	
-	//public String students()
-	//{
-	//	Student buff;
-	//	Student[] stdBuff = new Student[0];
-	//	
-	//	
-	//	
-	//	
-	//}
+	private Student[] getAllStudents()
+	{
+		Student allStd[] = new Student[0];
+		for(Department dep:departments)
+		{
+			Student dopStd[] = new Student[allStd.length+dep.getStudents().length];
+			for(int i = 0; i < dopStd.length; i++)
+			{
+				if(i < allStd.length)
+					dopStd[i] = allStd[i];
+				else
+					dopStd[i] = dep.getStudents()[i-allStd.length];
+			}
+			allStd = dopStd;
+		}
+		return allStd;
+	}
+	
+	public String studentsByCourse(int course)
+	{
+		String str = name + ":";
+		for(Student std:getAllStudents())
+		{
+			if(std.getCourse() == course)
+				str+="\n" + std;
+		}
+		return str;
+	}
 }
