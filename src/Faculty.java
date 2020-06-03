@@ -231,7 +231,7 @@ public class Faculty {
                 }
             }
         }
-        String output = "FI:";
+        String output = name + ":";
         output+= stdBuff[0].toString();
         for(int i = 1; i < stdBuff.length; ++i)
        		output += "\n	" + stdBuff[i].toString();

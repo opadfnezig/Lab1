@@ -582,9 +582,9 @@ public class Main {
 					if(com.length > 4)
 					{
 						if(com[4].equalsIgnoreCase("name"))
-							System.out.println(facultyByName(com[2]).departmentByName(com[2]).sortedByName());
+							System.out.println(facultyByName(com[3]).departmentByName(com[2]).sortedByName());
 						else if(com[4].equalsIgnoreCase("course"))
-							System.out.println(facultyByName(com[2]).departmentByName(com[2]).sortedByCourse());
+							System.out.println(facultyByName(com[3]).departmentByName(com[2]).sortedByCourse());
 						else
 							System.out.println("Error");
 					}
