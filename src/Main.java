@@ -78,6 +78,7 @@ public class Main {
 		System.out.println("/R - шлях([faculty]/[department]");
 		System.out.println("/S - сортувати за(name, course)");
 		System.out.println();
+		System.out.println("printF - команда що виводить студентів і вчителів незалежно від кафедр");
 		System.out.println("printF [назва факультету] [/O] [/S]");
 		System.out.println("/O - обєкт(student, teacher)");
 		System.out.println("/S - сортувати за(name, course)");

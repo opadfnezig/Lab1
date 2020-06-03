@@ -231,10 +231,10 @@ public class Faculty {
                 }
             }
         }
-        String output = "";
+        String output = "FI:";
         output+= stdBuff[0].toString();
         for(int i = 1; i < stdBuff.length; ++i)
-       		output += "\n" + stdBuff[i].toString();
+       		output += "\n	" + stdBuff[i].toString();
         return output;
 	}
 	/**
@@ -247,19 +247,22 @@ public class Faculty {
 		Student[] stdBuff = new Student[getAllStudents().length];
 		for(int i = 0;i < stdBuff.length;++i)
 			stdBuff[i] = getAllStudents()[i];
-		  for(int i = 0; i < stdBuff.length; i++)
-	            for(int j = i; j < stdBuff.length; j++)
-	                 if(stdBuff[i].getCourse() > stdBuff[j].getCourse())
-	                 {
-	                 	buff = stdBuff[i];
-	                 	stdBuff[i] = stdBuff[j];
-	                 	stdBuff[j] = buff;
-	                   	break;
-	                 }
-        String output = "";
-        output+= stdBuff[0].toString();
-        for(int i = 1; i < stdBuff.length; ++i)
-       		output += "\n" + stdBuff[i].toString();
+		for(int i = 0; i < stdBuff.length; i++)
+		{
+	        for(int j = i; j < stdBuff.length; j++)
+	        {
+	        	if(stdBuff[i].getCourse() > stdBuff[j].getCourse())
+	            {
+	                 buff = stdBuff[i];
+	                 stdBuff[i] = stdBuff[j];
+	                 stdBuff[j] = buff;
+	                 break;
+	             }
+	        }
+		}
+        String output = name +":";
+        for(int i = 0; i < stdBuff.length; i++)
+       		output += "\n	" + stdBuff[i].toString();
         return output;
 	}
 	/**
@@ -302,7 +305,7 @@ public class Faculty {
 		}
 		String str = name+":";
 		for(Teacher tea:allTea)
-			str+="\n"+tea;
+			str+="\n	"+tea;
 		return str;
 	}
 	/**
