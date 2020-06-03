@@ -241,9 +241,8 @@ public class Department {
             }
         }
         String output = "";
-        output+= stdBuff[0].toString();
-        for(int i = 1; i < stdBuff.length; ++i)
-       		output += "\n" + stdBuff[i].toString();
+        for(int i = 0; i < stdBuff.length; i++)
+       		output += "\n	" + stdBuff[i].toString();
         return output;
 	}
 	public String sortedTeachers()
@@ -296,11 +295,11 @@ public class Department {
 	
 	public String sortedByName()
 	{
-		String output = name + "\n	Teachers:\n";
+		String output = name + ":\n	Teachers:";
 		output += sortedTeachers();
-		output += "	Students:\n";
+		output += "\n	Students:";
 		output += sortedStudentsByName();
-		output += "	Groups:";
+		output += "\n	Groups:";
 		output += sortedGroups();
 		return output;
 	}
@@ -321,21 +320,19 @@ public class Department {
 	                   	break;
 	                 }
         String output = "";
-        output+= stdBuff[0].toString();
-        for(int i = 1; i < stdBuff.length; ++i)
-       		output += "\n" + stdBuff[i].toString();
+        for(int i = 0; i < stdBuff.length; i++)
+       		output += "\n	" + stdBuff[i].toString();
         return output;
 	}
 	
 	public String sortedByCourse()
 	{
-		String output = "	Teachers:\n";
+		String output = name +":\n	Teachers:";
 		output += sortedTeachers();
-		output += "	Students:\n";
+		output += "\n	Students:";
 		output += sortedStudentsByCourse();
-		output += "	Groups:";
-		for(int i = 0;i< groups.length;++i)
-			output += "\n" + groups[i].toString();
+		output += "\n	Groups:";
+		output += sortedGroups();
 		return output;
 	}
 }
