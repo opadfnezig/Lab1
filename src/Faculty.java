@@ -37,12 +37,20 @@ public class Faculty {
 	{
 		return departments;
 	}
-	
+	/**
+	 * Повертає кафедру за індексом
+	 * @param i індекс
+	 * @return кафедра
+	 */
 	public Department departmentAt(int i)
 	{
 		return departments[i];
 	}
-	
+	/**
+	 * Метод що перевіряє чи існує кафедра під даним іменем
+	 * @param name імя кафедри
+	 * @return true false 
+	 */
 	public boolean isExist(String name)
 	{
 		for(int i = 0; i < departments.length; i++)
@@ -50,7 +58,11 @@ public class Faculty {
 				return true;
 		return false;
 	}
-	
+	/**
+	 * Повертає кафедру за іменем
+	 * @param name імя
+	 * @return кафедра
+	 */
 	public Department departmentByName(String name)
 	{
 		for(int i = 0; i < departments.length; i++)
@@ -58,7 +70,10 @@ public class Faculty {
 				return departments[i];
 		return null;
 	}
-	
+	/**
+	 * Видаляє кафедру за іменем
+	 * @param name імя
+	 */
 	public void deleteDepartmentByName(String name)
 	{
 		int index = -1;
@@ -97,6 +112,10 @@ public class Faculty {
 			str += "\n" + departments[i];
 		return str;
 	}
+	/**
+	 * Повертає рядок з відсортованими кафедрами
+	 * @return рядок
+	 */
 	public String sortedDepartments()
     {
 		Department buff;
@@ -129,7 +148,10 @@ public class Faculty {
        		output += "\n" + depBuf[i].toString();
         return output;
     }
-	
+	/**
+	 * Повертає метод всіх студентів факультету
+	 * @return масив студентів
+	 */
 	private Student[] getAllStudents()
 	{
 		Student allStd[] = new Student[0];
@@ -147,7 +169,10 @@ public class Faculty {
 		}
 		return allStd;
 	}
-	
+	/**
+	 * Повертає масив всіх викладачів 
+	 * @return масив викладачів
+	 */
 	private Teacher[] getAllTeachers()
 	{
 		Teacher allTea[] = new Teacher[0];
@@ -165,7 +190,10 @@ public class Faculty {
 		}
 		return allTea;
 	}
-	
+	/**
+	 * Повертає рядок зі всіма студентами факультету
+	 * @return рядок
+	 */
 	public String students()
 	{
 		String str = name + ":";
@@ -173,7 +201,10 @@ public class Faculty {
 			str += "\n	" + std;
 		return str;
 	}
-	
+	/**
+	 * Повертає рядок студентів факультету відсортованих за іменем 
+	 * @return рядок
+	 */
 	public String sortedStudentsByName()
 	{
 		Student buff;
@@ -206,7 +237,10 @@ public class Faculty {
        		output += "\n" + stdBuff[i].toString();
         return output;
 	}
-	
+	/**
+	 * Повертає рядок всіх студентів факультету відсортованих за курсом
+	 * @return рядок
+	 */
 	public String sortedStudentsByCourse()
 	{
 		Student buff;
@@ -228,7 +262,10 @@ public class Faculty {
        		output += "\n" + stdBuff[i].toString();
         return output;
 	}
-	
+	/**
+	 * Повертає рядок всіх викладачів факультету
+	 * @return рядок
+	 */
 	public String teachers()
 	{
 		String str = name + ":";
@@ -236,7 +273,10 @@ public class Faculty {
 			str += "\n	" + tea;
 		return str;
 	}
-	
+	/**
+	 * Повертає рядок всіх викладачів факультету відсортованих за іменем
+	 * @return рядок
+	 */
 	public String sortedTeachersByName()
 	{
 		Teacher allTea[] = getAllTeachers();
@@ -265,7 +305,11 @@ public class Faculty {
 			str+="\n"+tea;
 		return str;
 	}
-	
+	/**
+	 * Повертає всіх студентів конкретного курсу
+	 * @param course курс
+	 * @return рядок
+	 */
 	public String studentsByCourse(int course)
 	{
 		String str = name + ":";
