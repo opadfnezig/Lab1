@@ -249,7 +249,7 @@ public class Department {
 	public String sortedTeachers()
 	{
 		Teacher buff;
-		Teacher[] tchBuff = new Teacher[students.length];
+		Teacher[] tchBuff = new Teacher[teachers.length];
 		for(int i = 0;i < tchBuff.length;++i)
 			tchBuff[i] = teachers[i];
         for(int i = 0; i < tchBuff.length; i++)
@@ -269,15 +269,14 @@ public class Department {
                         break;
                 }
         String output = "";
-        output+= tchBuff[0].toString();
-        for(int i = 1; i < tchBuff.length; ++i)
-       		output += "\n" + tchBuff[i].toString();
+        for(int i = 0; i < tchBuff.length; i++)
+       		output += "\n	" + tchBuff[i].toString();
         return output;
 	}
 	public String sortedGroups()
 	{
 		Group buff;
-		Group[] grpBuff = new Group[students.length];
+		Group[] grpBuff = new Group[groups.length];
 		for(int i = 0;i < grpBuff.length;++i)
 			grpBuff[i] = groups[i];
         for(int i = 0; i < grpBuff.length; i++)
@@ -290,21 +289,19 @@ public class Department {
                    	break;
                  }
         String output = "";
-        output+= grpBuff[0].toString();
-        for(int i = 1; i < grpBuff.length; ++i)
-       		output += "\n" + grpBuff[i].toString();
+        for(int i = 0; i < grpBuff.length; i++)
+       		output += "\n	" + grpBuff[i].toString();
         return output;
 	}
 	
 	public String sortedByName()
 	{
-		String output = "	Teachers:\n";
+		String output = name + "\n	Teachers:\n";
 		output += sortedTeachers();
 		output += "	Students:\n";
 		output += sortedStudentsByName();
 		output += "	Groups:";
-		for(int i = 0;i< groups.length;++i)
-			output += "\n" + groups[i].toString();
+		output += sortedGroups();
 		return output;
 	}
 	
